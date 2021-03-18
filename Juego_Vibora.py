@@ -35,7 +35,11 @@ def change(x, y):
 def inside(head):
     "Return True if head inside boundaries."
     return -200 < head.x < 190 and -200 < head.y < 190 #Límites de la ventana
-
+def move_food():
+    "Mueve de manera aleatoria la comida"
+    if -180 < food.x < 170 and -180 < food.y < 170: #Solo se mueve si se moverá a una posición válida
+        food.x = food.x + (randrange(-1, 1)) *10
+        food.y = food.y + (randrange(-1, 1)) *10
 def move():
     "Move snake forward one segment."
     head = snake[-1].copy()
@@ -63,6 +67,7 @@ def move():
     square(food.x, food.y, 9, SetColor(colorfood))
     update()
     ontimer(move, 100)
+    ontimer(move_food, 100)
 
 setup(420, 420, 370, 0)
 hideturtle() #Esconde el cursor de turtle
