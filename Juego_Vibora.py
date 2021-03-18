@@ -6,25 +6,24 @@ food = vector(0, 0) #Crea vector de food
 snake = [vector(10, 0)] #Crea vector de snake
 aim = vector(0, -10) #Crea vector de aim
 
-colorfood = randrange(1,6)
-colorsnake = randrange(1,6)
+#Cada que se corra el juego, la víbora y la comida tendran colores diferentes entre si
+colorfood = randrange(1,6) #rango
+colorsnake = randrange(1,6) #rango 
 
-while colorfood == colorsnake:
+while colorfood == colorsnake: #identicacir si los colores son iguales 
     colorfood = randrange(1,6)
     
-def SetColor(num):
+def SetColor(num): #Colores distintos dependiendo del color de la víbora 
     if num == 1:
         color = 'blue'
     elif num == 2:
         color = 'purple'
     elif num == 3:
         color = 'orange'
-    elif num == 3:
-        color = 'green'
     elif num == 4:
-        color = 'pink'
+        color = 'green'
     elif num == 5:
-        color = 'black'
+        color = 'pink'
     return color
 
 def change(x, y):
@@ -62,9 +61,9 @@ def move():
     clear()
 
     for body in snake:
-       square(body.x, body.y, 9, SetColor(colorsnake))
+       square(body.x, body.y, 9, SetColor(colorsnake)) #elección del color de la víbora 
 
-    square(food.x, food.y, 9, SetColor(colorfood))
+    square(food.x, food.y, 9, SetColor(colorfood)) #elección del color de la comida
     update()
     ontimer(move, 100)
     ontimer(move_food, 100)
